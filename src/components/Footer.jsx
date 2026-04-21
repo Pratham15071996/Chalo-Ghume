@@ -49,10 +49,10 @@ export default function Footer() {
           spacing={8}>
           <Stack spacing={6}>
             <Box>
-              <Text fontWeight={'extrabold'} fontSize={'120%'} >Chalo Ghume Group</Text>
+              <Text fontWeight={'extrabold'} fontSize={'120%'} >Chalo Ghume</Text>
             </Box>
             <Text fontSize={'sm'}>
-              © 2023 Chalo Ghume. All rights reserved
+              © 2026 Chalo Ghume. All rights reserved
             </Text>
           </Stack>
           <Stack align={'flex-start'}>
