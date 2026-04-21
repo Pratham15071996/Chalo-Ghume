@@ -109,3 +109,19 @@ Users can search hotels, login/signup, and view listings.
 - User Authentication
 - Hotel Listings
 - Responsive UI
+
+# Hotel Booking Web Application
+
+## 🌐 Live Demo
+https://your-deployed-link.com
+
+## 👨‍💻 Developed By
+Pratham Sinha
+
+## 📚 Project Description
+This is a hotel booking web application developed using React and Chakra UI.
+
+## ⚙️ How to Run Locally
+1. npm install
+2. npm start
+3. npx json-server --watch db.json
