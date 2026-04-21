@@ -49,7 +49,7 @@ export default function Footer() {
           spacing={8}>
           <Stack spacing={6}>
             <Box>
-              <Text fontWeight={'extrabold'} fontSize={'120%'} >Chalo Ghume</Text>
+              <Text fontWeight={'extrabold'} fontSize={'120%'} >Chalo Ghume Travel Booking Application</Text>
             </Box>
             <Text fontSize={'sm'}>
               © 2026 Chalo Ghume. All rights reserved
