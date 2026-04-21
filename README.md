@@ -125,3 +125,31 @@ This is a hotel booking web application developed using React and Chakra UI.
 1. npm install
 2. npm start
 3. npx json-server --watch db.json
+
+# Chalo Ghume - Travel Booking Web App
+
+## 👨‍💻 Developed By
+Pratham Sinha
+
+## 📚 Project Description
+Chalo Ghume is a travel booking web application where users can explore hotels, flights, and destinations.
+
+## 🚀 Features
+- User Authentication (Login/Register)
+- Hotel & Flight Booking UI
+- Admin Dashboard
+- Responsive Design
+
+## 🛠 Technologies Used
+- React.js
+- Redux
+- Chakra UI / CSS
+- JSON Server
+
+## 🌐 Live Demo
+(Add your deployed link here)
+
+## ⚙️ Run Locally
+npm install  
+npm start  
+npx json-server --watch db.json
