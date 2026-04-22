@@ -1,8 +1,8 @@
 import { Tab, TabIndicator,Box, TabList, TabPanel, TabPanels, Tabs, Center } from '@chakra-ui/react'
-import Stay from '../../Pages/Stay/Stay';
+import { Stay } from '../../pages/stay/Stay';
 import React from 'react'
-import { InputBox } from '../../Pages/ThingsTodo/InputBox'
-import Flights from '../../Pages/Flights/Flight'
+import { InputBox } from '../../pages/thingsTodo/InputBox'
+import { Flight } from '../../pages/flights/Flight'
 
 const MainInputBox = () => {
   return (
@@ -28,7 +28,7 @@ const MainInputBox = () => {
                     <Stay/>
                     </TabPanel>
                     <TabPanel>
-                        <Flights/>
+                        <Flight/>
                     </TabPanel>
                     <TabPanel>
                         <p>Cars</p>
