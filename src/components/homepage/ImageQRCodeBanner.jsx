@@ -37,7 +37,7 @@ const ImageQRCodeBanner = () => {
             p={5}
             maxW={{ base: '100%', sm: '200px' }}
             src='https://a.travel-assets.com/mad-service/qr-code/footer_qr_hp/BEX-HP-CONTROL-27.png'
-            alt='Caffe Latte'
+            alt='Download QR Code'
         />
         </Card>
         </Box>
