@@ -25,17 +25,17 @@ const HelpBoxes = () => {
                 </Box>
                 <Box border='1px solid #E0E0E0' rounded='7px' mt={4} >
                     <HStack justifyContent={'space-between'} pr={2} >
-                    <Heading textAlign={'left'} p={3} pb={1} fontSize='20px' >Use a Credit or Coupan</Heading>
+                    <Heading textAlign={'left'} p={3} pb={1} fontSize='20px' >Use a Credit or Coupon</Heading>
                     <Icon as={HiCurrencyDollar}  />
                     </HStack>
-                    <Text textAlign={'left'} p={3} pt={1} color='#616161' fontSize='12px' >Apply a coupan code or credit a new trip</Text>
+                    <Text textAlign={'left'} p={3} pt={1} color='#616161' fontSize='12px' >Apply a coupon code or credit a new trip</Text>
                 </Box>
                 <Box border='1px solid #E0E0E0' rounded='7px' mt={4} >
                     <HStack justifyContent={'space-between'} pr={2} >
                     <Heading textAlign={'left'} p={3} pb={1} fontSize='20px' >Track your Refund</Heading>
                     <Icon as={RiMessage2Fill}  />
                     </HStack>
-                    <Text textAlign={'left'} p={3} pt={1} color='#616161' fontSize='12px' >Check a process of refund currently progress</Text>
+                    <Text textAlign={'left'} p={3} pt={1} color='#616161' fontSize='12px' >Check the status of your refund</Text>
                 </Box>
             </SimpleGrid>
         </Box>
