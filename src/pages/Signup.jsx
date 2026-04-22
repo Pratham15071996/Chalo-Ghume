@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./login.css";
-import firebase_app from "../01_firebase/config_firebase";
+import "./Login.css";
+import firebase_app from "../services/firebase";
 import {
   getAuth,
   RecaptchaVerifier,
   signInWithPhoneNumber,
 } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
-import { fetch_users, userRigister } from "../Redux/Authantication/auth.action";
-import Navbar from "../Components/Navbar";
+import { fetch_users, userRegister } from "../redux/auth/authActions";
 
 const auth = getAuth(firebase_app);
 const state = {
@@ -21,9 +19,8 @@ const state = {
   otpVerify: false,
 };
 
-export const Register = () => {
+export const Signup = () => {
   const [check, setCheck] = useState(state);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   let exist = false;
   const { number, otp, verify, otpVerify, user_name, password } = check;
@@ -37,7 +34,7 @@ export const Register = () => {
   });
 
   //  check if the user is exist of not
-  for (let i = 0; i <= user.length - 1; i++) {
+  for (let i = 0; i < (user?.length || 0); i++) {
     if (user[i].number === number) {
       exist = true;
       break;
@@ -55,12 +52,12 @@ export const Register = () => {
       gender: "",
       marital_status: null,
     };
-    dispatch(userRigister(newObj));
+    dispatch(userRegister(newObj));
     setCheck(state);
     window.location = "/login";
   };
 
-  // oonCapture
+  // onCapture
   function onCapture() {
     window.recaptchaVerifier = new RecaptchaVerifier(
       "recaptcha-container",
@@ -85,7 +82,7 @@ export const Register = () => {
     if (number.length === 10) {
       if (exist) {
         document.querySelector("#loginMesageError").innerHTML =
-          "User Alredy exist";
+          "User Already exists";
         document.querySelector("#loginMesageSuccess").innerHTML = ``;
       } else {
         signInWithPhoneNumber(auth, phoneNumber, appVerifier)
@@ -115,7 +112,7 @@ export const Register = () => {
     }
   }
 
-  // if the code is verifyed
+  // if the code is verified
   function verifyCode() {
     window.confirmationResult
       .confirm(otp)
@@ -125,7 +122,7 @@ export const Register = () => {
         setCheck({ ...check, otpVerify: true });
         document.querySelector(
           "#loginMesageSuccess"
-        ).innerHTML = `Verifyed Successful`;
+        ).innerHTML = `Verified Successfully`;
         document.querySelector("#loginMesageError").innerHTML = "";
         document.querySelector("#loginNumber").style.display = "none";
         document.querySelector("#loginOtp").style.display = "none";
@@ -147,19 +144,19 @@ export const Register = () => {
 
   useEffect(() => {
     dispatch(fetch_users);
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
       <div className="mainLogin">
         <div id="recaptcha-container"></div>
         <div className="loginBx">
-        <div className="logoImgdivReg"><img className="imglogoReg" src="https://i.postimg.cc/QxksRNkQ/expedio-Logo.jpg':'https://i.postimg.cc/fRx4D7QH/logo3.png" alt="" /></div>
+        <div className="logoImgdivReg"><img className="imglogoReg" src="https://i.postimg.cc/QxksRNkQ/expedio-Logo.jpg" alt="" /></div>
 
           <div className="loginHead">
           <hr /><hr /><hr />
 
-            <h1>Register</h1>
+            <h1>Sign Up</h1>
           </div>
           
           <div className="loginInputB" id="loginNumber">
