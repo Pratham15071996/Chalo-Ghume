@@ -6,12 +6,12 @@ import { AdminDashboard } from "../pages/admin/AdminDashboard";
 import { AdminProducts } from "../pages/admin/AdminProducts";
 import { AllHotels } from "../pages/admin/AllHotels";
 import { Destination } from "../pages/thingsTodo/Destination";
-import Home from "../pages/Home";
-import Login from "../pages/Login";
-import Signup from "../pages/Signup";
-import StayData from "../pages/stay/StayData";
-import CheckoutPage from "../pages/CheckoutPage";
-import FlightData from "../pages/flights/FlightData";
+import { Home } from "../pages/Home";
+import { Login } from "../pages/Login";
+import { Signup } from "../pages/Signup";
+import { StayData } from "../pages/stay/StayData";
+import { CheckoutPage } from "../pages/CheckoutPage";
+import { FlightData } from "../pages/flights/FlightData";
 
 export const AllRoutes = () => {
     return (
@@ -34,5 +34,3 @@ export const AllRoutes = () => {
         </>
       );
 }
-
-// add
