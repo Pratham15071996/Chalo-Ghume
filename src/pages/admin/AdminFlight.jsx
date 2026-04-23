@@ -2,7 +2,7 @@ import "./Admin.Module.css";
 import React, { useState } from "react";
 
 import { useDispatch } from "react-redux";
-import { addFlight } from "../../Redux/AdminFlights/action";
+import { addFlight } from "../../redux/flights/actions";
 import { Link } from "react-router-dom";
 
 let initialState = {

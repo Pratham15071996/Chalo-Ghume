@@ -1,10 +1,10 @@
 import React from "react";
-import MainInputBox from "../Components/HomePageComponents/MainInputBox";
-import Banner1 from "../Components/HomePageComponents/Banner1";
-import ImageQRCodeBanner from "../Components/HomePageComponents/ImageQRCodeBanner";
-import HelpBoxes from "../Components/HomePageComponents/HelpBoxes";
-import QatarVisitBanner from "../Components/HomePageComponents/QatarVisitBanner";
-import ManSeeBanner from "../Components/HomePageComponents/ManSeeBanner";
+import MainInputBox from "../components/homepage/MainInputBox";
+import Banner1 from "../components/homepage/Banner1";
+import ImageQRCodeBanner from "../components/homepage/ImageQRCodeBanner";
+import HelpBoxes from "../components/homepage/HelpBoxes";
+import QatarVisitBanner from "../components/homepage/QatarVisitBanner";
+import ManSeeBanner from "../components/homepage/ManSeeBanner";
 
 const HomePage = () => {
   return (

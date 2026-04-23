@@ -8,7 +8,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import {
   DeleteFlightProducts,
   fetchFlightProducts,
-} from "../../Redux/AdminFlights/action";
+} from "../../redux/flights/actions";
 
 export const AdminProducts = () => {
   const dispatch = useDispatch();

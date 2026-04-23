@@ -1,7 +1,7 @@
 import "./Admin.Module.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { addHotel } from "../../Redux/AdminHotel/action";
+import { addHotel } from "../../redux/hotels/actions";
 import { useDispatch } from "react-redux";
 
 let initialState = {

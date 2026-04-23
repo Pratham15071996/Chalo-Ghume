@@ -40,42 +40,38 @@ export const handlelogout_user = () => {
   return { type: LOGOUT_USER };
 };
 
-export const userRigister = (userData) => async (dispatch) => {
+export const userRegister = (userData) => async (dispatch) => {
   dispatch(register_request());
-  let res = await axios
-    .post(`http://localhost:8080/users`, userData)
-    .then((res) => {
-      dispatch(register_success(res.data));
-      // console.log(res.data)
-    })
-    .catch((err) => {
-      dispatch(register_error());
-    });
+  try {
+    const res = await axios.post(
+      `${process.env.REACT_APP_AUTH_API_URL}/users`,
+      userData
+    );
+    dispatch(register_success(res.data));
+  } catch (err) {
+    dispatch(register_error());
+  }
 };
 
 // get users
-
-export const fetch_users = (dispatch) => {
+export const fetch_users = () => async (dispatch) => {
   dispatch(register_request());
-  axios
-    .get(`http://localhost:8080/users`)
-    .then((res) => {
-      dispatch(get_users(res.data));
-    })
-    .catch((err) => {
-      dispatch(register_error());
-    });
+  try {
+    const res = await axios.get(
+      `${process.env.REACT_APP_AUTH_API_URL}/users`
+    );
+    dispatch(get_users(res.data));
+  } catch (err) {
+    dispatch(register_error());
+  }
 };
 
-// Logint funcnality
-
+// Login functionality
 export const login_user = (loginData) => (dispatch) => {
   dispatch(login_success(loginData));
-  // localStorage.setItem("MkuserData", JSON.stringify(loginData));
-  // localStorage.setItem("MkisAuth", JSON.stringify(true));
 };
 
-export const logout_user = (dispatch) => {
+export const logout_user = () => (dispatch) => {
   dispatch(handlelogout_user());
   localStorage.setItem("MkuserData", JSON.stringify({}));
   localStorage.setItem("MkisAuth", JSON.stringify(false));

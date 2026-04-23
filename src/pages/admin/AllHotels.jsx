@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import "font-awesome/css/font-awesome.min.css";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
-import { DeleteHotel, fetchingHotels } from "../../Redux/AdminHotel/action";
+import { DeleteHotel, fetchingHotels } from "../../redux/hotels/actions";
 
 export const AllHotels = () => {
   const dispatch = useDispatch();

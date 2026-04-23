@@ -6,7 +6,7 @@ import { Button,} from "@chakra-ui/react";
 import styles from "./Stay.module.css";
 import {Link} from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { selectCity } from "../../Redux/StayReducer/action";
+import { selectCity } from "../../redux/stay/actions";
 
 function Stay() {
   const [selectedCity, setSelectedCity] = useState("");

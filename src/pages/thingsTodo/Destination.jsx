@@ -4,25 +4,32 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import DestinationCard from './DestinationCard';
-import Navbar from '../../Components/Navbar';
-import Footer from '../../Components/Footer'
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer'
 
 import {Grid,Box,Center} from '@chakra-ui/react';
 
 
 export const Destination = () => {
   const [places,setPlaces] = useState([])
+  const [error, setError] = useState(null)
   const [searchParams] = useSearchParams()
  
   let place = searchParams.get("place")
   
   
   useEffect(()=>{
-    axios.get(`https://happy-sunglasses-eel.cyclic.app/Things_todo?place=${place}`).then((response) => {
-        setPlaces(response.data)
-     console.log(response.data)
-    });
-  },[])
+    if (place) {
+      axios.get(`${process.env.REACT_APP_THINGS_TODO_API_URL}/Things_todo?place=${place}`)
+        .then((response) => {
+          setPlaces(response.data)
+          setError(null)
+        })
+        .catch((err) => {
+          setError('Failed to load destinations')
+        });
+    }
+  }, [place])
  
  
   return (

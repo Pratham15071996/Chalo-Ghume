@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { fetchingHotels } from "../../Redux/StayReducer/action";
+import { fetchingHotels } from "../../redux/stay/actions";
 
 
 function Pagination({current, onChange, total}) {

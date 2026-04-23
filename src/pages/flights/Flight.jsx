@@ -1,11 +1,9 @@
-// import { Footer } from "../../components/Footer";
 import { useState } from "react";
 import React from "react";
 import { Button,} from "@chakra-ui/react";
 import {Link} from "react-router-dom";
 import "./homePage.css";
-import styles from "../Stay/Stay.module.css";
-// import SideBar from "./SideBar";
+import styles from "../stay/Stay.module.css";
 
 const initialState = {
   from: "",

@@ -8,17 +8,25 @@ export default function FlightCard({ data }) {
   const toast = useToast();
 
   const handleClick = () => {
-    axios.post(`http://localhost:8000/flightcart`, data);
-    //   .then((res) => console.log(res))
-    //   .catch((err) => console.log(err))
-
-    toast({
-      title: "Flight Add to Cart",
-      description: "Please Proceed to Payment",
-      status: "success",
-      duration: 9000,
-      isClosable: true,
-    });
+    axios.post(`${process.env.REACT_APP_FLIGHT_CART_API_URL}/flightcart`, data)
+      .then((res) => {
+        toast({
+          title: "Flight Added to Cart",
+          description: "Please proceed to payment",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        });
+      })
+      .catch((err) => {
+        toast({
+          title: "Error",
+          description: "Failed to add flight to cart",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+      });
   };
 
   

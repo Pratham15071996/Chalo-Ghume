@@ -1,9 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-// import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchFlightProducts } from "../../Redux/AdminFlights/action";
+import { fetchFlightProducts } from "../../redux/flights/actions";
 import "./AdminDashboard.Module.css";
 
 

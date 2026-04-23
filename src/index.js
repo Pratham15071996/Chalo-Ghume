@@ -12,10 +12,10 @@ import { store } from './redux/store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <ChakraBaseProvider>
+    <ChakraProvider>
       <BrowserRouter>
         <App />
        </BrowserRouter>
-    </ChakraBaseProvider>
+    </ChakraProvider>
   </Provider>
 );

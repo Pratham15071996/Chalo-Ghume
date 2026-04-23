@@ -24,11 +24,10 @@ export const flightFailure = () => {
   return { type: FLIGHT_FAILURE };
 };
 
-//
 export const fetch_flights_product = (payload) => {
   return { type: FETCH_FLIGHTS, payload };
 };
-//
+
 export const handleDeleteProduct = (payload) => {
   return { type: DELETE_FLIGHTS, payload };
 };
@@ -37,7 +36,7 @@ export const addFlight = (payload) => (dispatch) => {
   dispatch(flightRequest());
 
   axios
-    .post("http://localhost:8080/flight", payload) // https://makemytrip-api-data.onrender.com/flight
+    .post(`${process.env.REACT_APP_FLIGHT_API_URL}/flight`, payload)
     .then(() => {
       dispatch(postFlightSuccess());
     })
@@ -46,11 +45,10 @@ export const addFlight = (payload) => (dispatch) => {
     });
 };
 
-//
 export const fetchFlightProducts = (limit) => (dispatch) => {
   dispatch(flightRequest());
   axios
-    .get(`http://localhost:8080/flight?_limit=${limit}`)   //https://makemytrip-api-data.onrender.com/flight?_limit=${limit}
+    .get(`${process.env.REACT_APP_FLIGHT_API_URL}/flight?_limit=${limit}`)
     .then((res) => {
       dispatch(fetch_flights_product(res.data));
     })
@@ -61,20 +59,16 @@ export const fetchFlightProducts = (limit) => (dispatch) => {
 
 export const DeleteFlightProducts = (deleteId) => async (dispatch) => {
   try {
-    const res = await axios(
-      `http://localhost:8080/flight?${deleteId}`, //https://makemytrip-api-data.onrender.com/flight/${deleteId}
+    const res = await axios.delete(
+      `${process.env.REACT_APP_FLIGHT_API_URL}/flight/${deleteId}`,
       {
-        method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
       }
     );
-    let data = await res.json();
-    console.log(data);
-
     dispatch(handleDeleteProduct(deleteId));
   } catch (e) {
-    console.log(e);
+    // Error handling
   }
 };

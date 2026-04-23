@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import { useDispatch } from "react-redux";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "../Stay/CheckInCheckOut.module.css";
-import { selectDateAndCity } from "../../Redux/StayReducer/action";
+import { selectDateAndCity } from "../../redux/stay/actions";
 
 function ShowCalender() {
   const [checkInDate, setCheckInDate] = useState(null);

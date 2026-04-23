@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import firebase_app from "../services/firebase";
 import {
@@ -10,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetch_users, userRegister } from "../redux/auth/authActions";
 
 const auth = getAuth(firebase_app);
-const state = {
+const initialState = {
   number: "",
   otp: "",
   user_name: "",
@@ -20,7 +21,10 @@ const state = {
 };
 
 export const Signup = () => {
-  const [check, setCheck] = useState(state);
+  const [check, setCheck] = useState(initialState);
+  const [successMsg, setSuccessMsg] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   let exist = false;
   const { number, otp, verify, otpVerify, user_name, password } = check;
@@ -53,8 +57,10 @@ export const Signup = () => {
       marital_status: null,
     };
     dispatch(userRegister(newObj));
-    setCheck(state);
-    window.location = "/login";
+    setCheck(initialState);
+    setTimeout(() => {
+      navigate("/login");
+    }, 500);
   };
 
   // onCapture
@@ -65,8 +71,6 @@ export const Signup = () => {
         size: "invisible",
         callback: (response) => {
           handleVerifyNumber();
-          // reCAPTCHA solved, allow signInWithPhoneNumber.
-          // ...
         },
       },
       auth
@@ -75,40 +79,28 @@ export const Signup = () => {
 
   //   Verify button
   function handleVerifyNumber() {
-    document.querySelector("#nextButton").innerText = "Please wait...";
     onCapture();
     const phoneNumber = `+91${number}`;
     const appVerifier = window.recaptchaVerifier;
     if (number.length === 10) {
       if (exist) {
-        document.querySelector("#loginMesageError").innerHTML =
-          "User Already exists";
-        document.querySelector("#loginMesageSuccess").innerHTML = ``;
+        setErrorMsg("User already exists");
+        setSuccessMsg("");
       } else {
         signInWithPhoneNumber(auth, phoneNumber, appVerifier)
           .then((confirmationResult) => {
-            // SMS sent. Prompt user to type the code from the message, then sign the
-            // user in with confirmationResult.confirm(code).
             window.confirmationResult = confirmationResult;
             setCheck({ ...check, verify: true });
-            document.querySelector(
-              "#loginMesageSuccess"
-            ).innerHTML = `Otp Send To ${number} !`;
-            document.querySelector("#loginMesageError").innerHTML = "";
-            document.querySelector("#nextButton").style.display = "none";
-            // ...
+            setSuccessMsg(`OTP sent to ${number}!`);
+            setErrorMsg("");
           })
           .catch((error) => {
-            // Error; SMS not sent
-            // document.querySelector("#nextButton").innerText = 'Server Error'
-            // ...
+            setErrorMsg("Failed to send OTP. Please try again.");
           });
       }
-      //
     } else {
-      document.querySelector("#loginMesageSuccess").innerHTML = ``;
-      document.querySelector("#loginMesageError").innerHTML =
-        "Mobile Number is Invalid !";
+      setSuccessMsg("");
+      setErrorMsg("Mobile number is invalid!");
     }
   }
 
@@ -117,22 +109,14 @@ export const Signup = () => {
     window.confirmationResult
       .confirm(otp)
       .then((result) => {
-        // User signed in successfully.
         const user = result.user;
         setCheck({ ...check, otpVerify: true });
-        document.querySelector(
-          "#loginMesageSuccess"
-        ).innerHTML = `Verified Successfully`;
-        document.querySelector("#loginMesageError").innerHTML = "";
-        document.querySelector("#loginNumber").style.display = "none";
-        document.querySelector("#loginOtp").style.display = "none";
-        // ...
+        setSuccessMsg("Verified successfully!");
+        setErrorMsg("");
       })
       .catch((error) => {
-        // User couldn't sign in (bad verification code?)
-        document.querySelector("#loginMesageSuccess").innerHTML = ``;
-        document.querySelector("#loginMesageError").innerHTML = "Invalid OTP";
-        // ...
+        setSuccessMsg("");
+        setErrorMsg("Invalid OTP. Please try again.");
       });
   }
 
@@ -143,7 +127,7 @@ export const Signup = () => {
   };
 
   useEffect(() => {
-    dispatch(fetch_users);
+    dispatch(fetch_users());
   }, [dispatch]);
 
   return (
@@ -151,7 +135,7 @@ export const Signup = () => {
       <div className="mainLogin">
         <div id="recaptcha-container"></div>
         <div className="loginBx">
-        <div className="logoImgdivReg"><img className="imglogoReg" src="https://i.postimg.cc/QxksRNkQ/expedio-Logo.jpg" alt="" /></div>
+        <div className="logoImgdivReg"><img className="imglogoReg" src="https://i.postimg.cc/QxksRNkQ/expedio-Logo.jpg" alt="Logo" /></div>
 
           <div className="loginHead">
           <hr /><hr /><hr />
@@ -173,7 +157,6 @@ export const Signup = () => {
               <button
                 disabled={verify}
                 onClick={handleVerifyNumber}
-                id="nextButton"
               >
                 Next
               </button>

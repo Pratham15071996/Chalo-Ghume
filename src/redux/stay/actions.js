@@ -30,13 +30,11 @@ export const fetch_hotel = (payload) => {
   return { type: NEW_GET_HOTELS_SUCCESS, payload };
 };
 
-//
 export const handleDeleteHotel = (payload) => {
   return { type: DELETE_HOTEL, payload };
 };
 
-//Pick date and city for storing into redux store
-
+// Pick date and city for storing into redux store
 export const selectDateAndCity = (checkInDate,checkOutDate) => {
   return { type: SELECTED_DATE_AND_CITY, payload: { checkInDate, checkOutDate } };
 };
@@ -48,7 +46,7 @@ export const addHotel = (payload) => (dispatch) => {
   dispatch(hotelRequest());
 
   axios
-    .post("https://happy-sunglasses-eel.cyclic.app/hotel", payload) 
+    .post(`${process.env.REACT_APP_STAY_API_URL}/hotel`, payload) 
     .then(() => {
       dispatch(postHotelSuccess());
     })
@@ -57,32 +55,22 @@ export const addHotel = (payload) => (dispatch) => {
     });
 };
 
-//https://happy-sunglasses-eel.cyclic.app/hotel?_sort=asc&_order=price&page=1&_limit=20
 export const fetchingHotels = (sort, order, page) => async (dispatch) => {
-  console.log(order, sort,page);
   dispatch({ type: HOTEL_REQUEST });
   try {
     const res = await axios.get(
-      `https://happy-sunglasses-eel.cyclic.app/hotel?_sort=${sort}&_order=${order}&_page=${page}&_limit=20`
+      `${process.env.REACT_APP_STAY_API_URL}/hotel?_sort=${sort}&_order=${order}&_page=${page}&_limit=20`
     );
-    console.log(res.data);
     dispatch({ type: GET_HOTEL_SUCCESS, payload: res.data });
   } catch (err) {
     dispatch({ type: HOTEL_FAILURE });
-    console.log(err);
   }
 };
-
-
-
-
-
-//
 
 export const DeleteHotel = (deleteId) => async (dispatch) => {
   try {
     const res = await fetch(
-      `https://happy-sunglasses-eel.cyclic.app/hotel/${deleteId}`, 
+      `${process.env.REACT_APP_STAY_API_URL}/hotel/${deleteId}`, 
       {
         method: "DELETE",
         headers: {
@@ -91,9 +79,8 @@ export const DeleteHotel = (deleteId) => async (dispatch) => {
       }
     );
     let data = await res.json();
-    console.log(data);
     dispatch(handleDeleteHotel(deleteId));
   } catch (e) {
-    console.log(e);
+    // Error handling
   }
 };

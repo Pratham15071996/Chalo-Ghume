@@ -1,6 +1,6 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
-import { fetchingHotels } from "../../Redux/StayReducer/action";
+import { fetchingHotels } from "../../redux/stay/actions";
 import { useDispatch } from "react-redux";
 import PriceSlider from "./PriceSlider";
 
