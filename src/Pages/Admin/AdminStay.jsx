@@ -1,4 +1,4 @@
-import "./Admin.Module.css";
+import "./AdminFlight.module.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { addHotel } from "../../Redux/AdminHotel/action";
