@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./login.css";
 import firebase_app from "../firebase/config_firebase";
 import {
@@ -35,7 +35,7 @@ export const Login = () => {
   let data = {};
 
   for (let i = 0; i <= user.length - 1; i++) {
-    if (user[i].number == number) {
+    if (user[i].number === number) {
       exist = true;
       data = user[i];
       break;
