@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 // import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchFlightProducts } from "../../Redux/AdminFlights/action";
-import "./AdminDashboard.Module.css";
+import "./AdminDashboard.module.css";
 
 
 export const AdminDashboard = () => {

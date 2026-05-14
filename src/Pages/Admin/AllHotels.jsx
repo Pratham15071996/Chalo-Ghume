@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./adminProduct.css";
+import "./AdminProducts.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
