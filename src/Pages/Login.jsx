@@ -19,12 +19,10 @@ const state = {
 
 export const Login = () => {
   const [check, setCheck] = useState(state);
-  // const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isAuth, activeUser, user } = useSelector((store) => {
+  const { isAuth, user } = useSelector((store) => {
     return {
       isAuth: store.LoginReducer.isAuth,
-      activeUser: store.LoginReducer.activeUser,
       user: store.LoginReducer.user,
     };
   });
@@ -132,11 +130,11 @@ export const Login = () => {
   // console.log(isAuth)
 
   useEffect(() => {
-    dispatch(fetch_users);
+    dispatch(fetch_users());
     if (isAuth) {
       window.location = "/";
     }
-  }, [isAuth]);
+  }, [dispatch, isAuth]);
 
   return (
     <>

@@ -55,16 +55,14 @@ export const userRigister = (userData) => async (dispatch) => {
 
 // get users
 
-export const fetch_users = (dispatch) => {
+export const fetch_users = () => async (dispatch) => {
   dispatch(register_request());
-  axios
-    .get(`https://happy-sunglasses-eel.cyclic.app/users`)
-    .then((res) => {
-      dispatch(get_users(res.data));
-    })
-    .catch((err) => {
-      dispatch(register_error());
-    });
+  try {
+    const res = await axios.get(`https://happy-sunglasses-eel.cyclic.app/users`);
+    dispatch(get_users(res.data));
+  } catch (err) {
+    dispatch(register_error());
+  }
 };
 
 // Logint funcnality

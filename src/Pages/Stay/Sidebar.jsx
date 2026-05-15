@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import PriceSlider from "./PriceSlider";
 
 export const Sidebar = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
   const [order,setOrder] = React.useState("asc");
   const [sort,setSort] = React.useState("");
   const dispatch = useDispatch();
@@ -31,8 +31,8 @@ const handlePriceChange = (e) => {
     order && (params["_order"] = order);
     setSearchParams(params);
 
-    dispatch(fetchingHotels(sort, order,));
-  }, [sort, order]);
+    dispatch(fetchingHotels(sort, order));
+  }, [sort, order, setSearchParams, dispatch]);
 
   return (
     <div>

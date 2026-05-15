@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./login.css";
 import firebase_app from "../firebase/config_firebase";
 import {
@@ -9,7 +8,6 @@ import {
 } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { fetch_users, userRigister } from "../Redux/Authentication/auth.action";
-import Navbar from "../Components/Navbar";
 
 const auth = getAuth(firebase_app);
 const state = {
@@ -23,7 +21,6 @@ const state = {
 
 export const Register = () => {
   const [check, setCheck] = useState(state);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   let exist = false;
   const { number, otp, verify, otpVerify, user_name, password } = check;
@@ -146,8 +143,8 @@ export const Register = () => {
   };
 
   useEffect(() => {
-    dispatch(fetch_users);
-  }, []);
+    dispatch(fetch_users());
+  }, [dispatch]);
 
   return (
     <>

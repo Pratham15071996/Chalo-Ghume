@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./PriceSlider.css";
-import StayData from "./StayData";
 
 const PriceSlider = () => {
  const [sliderValues, setSliderValues] = useState({ min: 130, max: 250 });

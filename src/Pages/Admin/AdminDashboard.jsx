@@ -1,23 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-// import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchFlightProducts } from "../../Redux/AdminFlights/action";
 import "./AdminDashboard.module.css";
 
 
 export const AdminDashboard = () => {
-  const dispatch = useDispatch();
   const [flight, setFlight] = useState(0);
   const [hotel, setHotel] = useState(0);
   const [users, setUsers] = useState(0);
   const [giftCard, setGiftCard] = useState(0);
   const [things, setThings] = useState(0);
- const [loading, setLoading] = useState(false);
 
   const getHotel = () => {
-    setLoading(true);
     axios
       .get("https://happy-sunglasses-eel.cyclic.app/flight")
       .then((res) => {
